@@ -22,42 +22,48 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+  <h1 align="center">
+  SAWADOGO Badini Ibrahim
+</h1>
+
+[![GitHub badiniibrahim](https://img.shields.io/github/followers/badiniibrahim?label=follow&style=social)](https://github.com/badiniibrahim)
+
+[![Gmail Badge](https://img.shields.io/badge/-sawadogo.badiniibrahim@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=sawadogo.badiniibrahim@gmail.com)](mailto:sawadogo.badiniibrahim@gmail.com)
+
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/badini-ibrahim-s-306b119b/)
+
+## About this Repository
+![GitHub language count](https://img.shields.io/github/languages/count/badiniibrahim/nest-js-rest-api-jwt)
+![GitHub top language](https://img.shields.io/github/languages/top/badiniibrahim/nest-js-rest-api-jwt)
+![GitHub last commit](https://img.shields.io/github/last-commit/badiniibrahim/nest-js-rest-api-jwt)
+![Github Repo Size](https://img.shields.io/github/repo-size/badiniibrahim/nest-js-rest-api-jwt)
+
 ## Description
+This is a repository to explore how to create a secure and effective authentication system with JWT access tokens
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Technologies
+- Nest.js
+- Typescript
+- MongoDb
+- Prisma
+  
+## 🔐 Setup .env file
+SECRET_KEY
 
+DATABASE_URL
+
+## :running: Run Locally
+
+Clone the project
+
+```bash
+ https://github.com/badiniibrahim/nest-js-api-jwt-prisma-mongo.git
+```
 ## Installation
 
 ```bash
 $ yarn install
 ```
-
-## Running the app
-
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
-
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
