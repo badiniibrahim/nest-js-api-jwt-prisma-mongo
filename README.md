@@ -52,6 +52,14 @@ SECRET_KEY
 
 DATABASE_URL
 
+S3_REGION
+
+S3_BUCKET
+
+ACCESS_KEY_Id
+
+SECRET_ACCESS_KEY
+
 ## :running: Run Locally
 
 Clone the project
