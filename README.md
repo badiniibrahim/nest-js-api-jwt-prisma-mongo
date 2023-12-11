@@ -39,13 +39,14 @@
 ![Github Repo Size](https://img.shields.io/github/repo-size/badiniibrahim/nest-js-rest-api-jwt)
 
 ## Description
-This is a repository to explore how to create a secure and effective authentication system with JWT access tokens
+This is a repository to explore how to create a secure and effective authentication system using three different strategies: local, JWT access tokens, and refresh tokens with nest.js 
 
 ## Technologies
 - Nest.js
 - Typescript
 - MongoDb
 - Prisma
+- aws
   
 ## 🔐 Setup .env file
 SECRET_KEY
