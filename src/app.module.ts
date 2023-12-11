@@ -9,6 +9,7 @@ import { JwtStrategy } from './auth/startegy/jwt-strategy';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { LikeModule } from './like/like.module';
+import { AwsS3Module } from './aws-s3/aws-s3.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LikeModule } from './like/like.module';
     PostsModule,
     CommentsModule,
     LikeModule,
+    AwsS3Module,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],

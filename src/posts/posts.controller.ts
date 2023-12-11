@@ -8,22 +8,30 @@ import {
   Delete,
   Req,
   UseGuards,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { Request } from 'express';
+import { Request, Express } from 'express';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('posts')
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @UseGuards(JwtAuthGuard)
+  @UseInterceptors(FileInterceptor('file'))
   @Post('create')
-  create(@Body() createPostDto: CreatePostDto, @Req() request: Request) {
+  create(
+    @Body() createPostDto: CreatePostDto,
+    @Req() request: Request,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
     const user = request['user'];
-    return this.postsService.create(createPostDto, user['id']);
+    return this.postsService.create(createPostDto, user['id'], file);
   }
 
   @UseGuards(JwtAuthGuard)

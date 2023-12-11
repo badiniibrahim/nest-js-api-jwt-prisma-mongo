@@ -38,6 +38,7 @@ model Post {
   userId   String    @db.ObjectId
   Comment  Comment[] @relation("post_comment")
   Like     Like[]    @relation("post_like")
+  imageUrl String?
 }
 
 model Comment {

@@ -6,18 +6,29 @@ import {
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { AwsS3Service } from 'src/aws-s3/aws-s3.service';
 
 @Injectable()
 export class PostsService {
-  constructor(readonly prismaService: PrismaService) {}
+  constructor(
+    readonly prismaService: PrismaService,
+    private awsS3Service: AwsS3Service,
+  ) {}
 
-  async create(createPostDto: CreatePostDto, userId: string) {
+  async create(
+    createPostDto: CreatePostDto,
+    userId: string,
+    file: Express.Multer.File,
+  ) {
     const { title, content } = createPostDto;
+    const bucketKey = `${file.fieldname}${Date.now()}`;
+    const fileUrl = await this.awsS3Service.uploadFile(file, bucketKey);
     await this.prismaService.post.create({
       data: {
         title,
         content,
         userId,
+        imageUrl: fileUrl,
       },
     });
     return { data: 'Post created' };
