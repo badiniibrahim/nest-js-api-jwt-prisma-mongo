@@ -25,11 +25,11 @@ export class AuthService {
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) throw new UnauthorizedException('Credentials incorrect');
-    const payload = { sub: user.id, email: user.email };
+    const payload = { sub: user.id, email: user.email, role: user.role };
 
-    const token = this.jwtService.sign(payload, {
+    const token = await this.jwtService.signAsync(payload, {
       expiresIn: '2h',
-      secret: this.configService.get('SECRET_KEY'),
+      secret: this.configService.get<string>('SECRET_KEY'),
     });
 
     return {
@@ -38,6 +38,7 @@ export class AuthService {
         id: user.id,
         email: user.email,
         username: user.username,
+        role: user.role,
       },
     };
   }

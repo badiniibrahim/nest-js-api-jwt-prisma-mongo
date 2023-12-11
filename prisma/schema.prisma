@@ -10,6 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 model User {
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   username String
@@ -20,6 +25,7 @@ model User {
   Post     Post[]    @relation("user_post")
   Comment  Comment[] @relation("user_comment")
   Like     Like[]    @relation("user_like")
+  role     UserRole  @default(USER)
 }
 
 model Post {
