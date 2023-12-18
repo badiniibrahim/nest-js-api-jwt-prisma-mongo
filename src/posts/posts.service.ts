@@ -20,6 +20,10 @@ export class PostsService {
     userId: string,
     file: Express.Multer.File,
   ) {
+    console.log(createPostDto);
+    console.log(userId);
+    console.log(file);
+
     const { title, content } = createPostDto;
     const bucketKey = `${file.fieldname}${Date.now()}`;
     const fileUrl = await this.awsS3Service.uploadFile(file, bucketKey);
@@ -61,11 +65,112 @@ export class PostsService {
     return posts;
   }
 
+  async findAllPost() {
+    const posts = await this.prismaService.post.findMany({
+      include: {
+        user: {
+          select: {
+            username: true,
+            imageUrl: true,
+            id: true,
+          },
+        },
+        Comment: {
+          select: {
+            userId: true,
+            content: true,
+            commentId: true,
+            user: {
+              select: {
+                username: true,
+              },
+            },
+          },
+        },
+        Like: {
+          select: {
+            userId: true,
+            postId: true,
+            likeId: true,
+          },
+        },
+      },
+    });
+    return posts;
+  }
+
   async findOne(id: string) {
     const post = await this.prismaService.post.findUnique({
       where: { postId: id },
+      include: {
+        user: {
+          select: {
+            username: true,
+            imageUrl: true,
+            id: true,
+          },
+        },
+        Comment: {
+          select: {
+            userId: true,
+            content: true,
+            commentId: true,
+            user: {
+              select: {
+                username: true,
+              },
+            },
+          },
+        },
+        Like: {
+          select: {
+            userId: true,
+            postId: true,
+            likeId: true,
+          },
+        },
+      },
     });
     return post;
+  }
+
+  async getUserPosts(userId: string) {
+    const posts = await this.prismaService.post.findMany({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+      include: {
+        user: {
+          select: {
+            username: true,
+            imageUrl: true,
+            id: true,
+          },
+        },
+        Comment: {
+          select: {
+            userId: true,
+            content: true,
+            commentId: true,
+            user: {
+              select: {
+                username: true,
+              },
+            },
+          },
+        },
+        Like: {
+          select: {
+            userId: true,
+            postId: true,
+            likeId: true,
+          },
+        },
+      },
+    });
+    return posts;
   }
 
   async update(postId: string, updatePostDto: UpdatePostDto, userId: string) {

@@ -8,4 +8,13 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
 
   @IsEmail()
   readonly email?: string;
+
+  @IsString()
+  readonly password?: string;
+
+  @IsString()
+  readonly bio?: string;
+
+  @IsString()
+  readonly imageUrl?: string;
 }

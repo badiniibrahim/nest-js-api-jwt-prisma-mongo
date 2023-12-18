@@ -26,6 +26,8 @@ model User {
   Comment  Comment[] @relation("user_comment")
   Like     Like[]    @relation("user_like")
   role     UserRole  @default(USER)
+  imageUrl String?
+  bio      String?
 }
 
 model Post {

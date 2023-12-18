@@ -42,9 +42,21 @@ export class PostsController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Get('all')
+  findAllPost() {
+    return this.postsService.findAllPost();
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get(':postId')
   findOne(@Param('postId') id: string) {
     return this.postsService.findOne(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('user/:userId')
+  getUserPosts(@Param('userId') id: string) {
+    return this.postsService.getUserPosts(id);
   }
 
   @UseGuards(JwtAuthGuard)

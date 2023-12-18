@@ -10,6 +10,7 @@ import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { LikeModule } from './like/like.module';
 import { AwsS3Module } from './aws-s3/aws-s3.module';
+import { MailerModule } from './mailer/mailer.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AwsS3Module } from './aws-s3/aws-s3.module';
     CommentsModule,
     LikeModule,
     AwsS3Module,
+    MailerModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],
